@@ -4,7 +4,7 @@
 docker run -it liamg/thisisfine
 ```
 
-![demo](fine.gif)
+![demo](demo.gif)
 
 
 
