@@ -1,0 +1,19 @@
+language: go
+go:
+- 1.16
+services:
+- docker
+env:
+  global:
+  - secure: "DsVZoOmqfnFPYlk8mSA2fESJ1qjz0wKV5SWWeW4a0kiL4m04jwVH4S7R2d70A9OBP8bsa9Tay1YmIbTJAI1miJzTD0cTnXG2ib4jzlC8J5smIexNqk5pX1Z8N01JPrckXZbW6s0fDbewT9LMdiY0nMHgSRf5VFcN3Xe2wk+SH8fJt/N3vRSlRXOG0JlaCNnFWAHB1bQaYemvLfqIz5rCf4PbQw5At6NHdoHy+aoWK0wqmK8471WRNsOhx5ggaicCccoMSlTslPhKlkXCRxLJBLWY1AoN2q7XwrI9Te2MAnvANVrdBNvMywFFZXkxJgcwK0BOefm15vx49JqtLisZ+wpI6DCjwmMGgiru20sgb7Ani51Xzy58+vrSsEJvb5+1SMttzbso8mpvUucAUtCkj0MSXAehn/SxSfN6BzA0gyBh+2/PbTvcM1hgyNj+W19YLaFR9I+P5OHMqQsi9ajsB53cTebMUIdax6lnLAV8aYwBou5ZID38zQBagJjmRH/nvXI/rEGGwxjUv6Vrpdweclw8uWDGWbr2eyBD1Zdc+la/F6POJeqsB01JmCycOpLk/B7dNR3CJWD1dYjjo1zIECVDJi8xNzEP+d+Lx6GXrPIHDZFcGFDfxLN2BJ5nREXrMVlk0a/+LdoxZFgEJv8/u/+amJp6yUygM724NA0j43M="
+jobs:
+  include:
+  - stage: publish image
+    name: Publish Docker image
+    if: tag IS NOT blank
+    before_script:
+    - docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
+    script:
+    - make build
+    - make publish
+
