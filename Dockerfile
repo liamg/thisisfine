@@ -1,6 +1,6 @@
 FROM golang:1.16
 
-RUN go install github.com/liamg/gifwrap/cmd/gifwrap@latest
+RUN go install github.com/liamg/gifwrap/cmd/gifwrap@v0.0.5
 
 ENV TERM=xterm-256color
 
