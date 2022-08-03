@@ -10,5 +10,5 @@ publish: build
 	docker push liamg/thisisfine:latest
 
 run: build
-	docker run -it thisisfine
+	docker run -it liamg/thisisfine
 
